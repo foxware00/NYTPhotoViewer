@@ -46,7 +46,6 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
 @property (nonatomic) NSNotificationCenter *notificationCenter;
 
 @property (nonatomic) BOOL shouldHandleLongPress;
-@property (nonatomic) BOOL *shouldHideCaption;
 @property (nonatomic) BOOL overlayWasHiddenBeforeTransition;
 
 @property (nonatomic, readonly) NYTPhotoViewController *currentPhotoViewController;
@@ -329,6 +328,10 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
 
 -(void)setIsTitleBackgroundSolid:(BOOL)isTitleBackgroundSolid{
     _isTitleBackgroundSolid = isTitleBackgroundSolid;
+}
+
+-(void)setShouldHideCaption:(BOOL)shouldHideCaption {
+    _shouldHideCaption = shouldHideCaption;
 }
 
 - (NSArray *)leftBarButtonItems {
