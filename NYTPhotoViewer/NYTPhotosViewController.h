@@ -89,11 +89,6 @@ extern NSString * const NYTPhotosViewControllerDidDismissNotification;
 @property (nonatomic)UIColor * backgroundColor;
 
 /**
- *  The view's background color
- */
-@property (nonatomic, readonly)BOOL *shouldHideCaption;
-
-/**
  *  The left bar button item overlaying the photo.
  */
 @property (nonatomic, nullable) UIBarButtonItem *leftBarButtonItem;
