@@ -16,6 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NYTPhotosOverlayView : UIView
 
 /**
+ *  The overlay title background color
+ */
+@property (nonatomic) UIColor * backgroundColor;
+
+/**
  *  The internal navigation bar used to set the bar button items and title of the overlay.
  */
 @property (nonatomic, readonly) UINavigationBar *navigationBar;

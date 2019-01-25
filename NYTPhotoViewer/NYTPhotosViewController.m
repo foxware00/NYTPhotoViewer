@@ -46,6 +46,7 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
 @property (nonatomic) NSNotificationCenter *notificationCenter;
 
 @property (nonatomic) BOOL shouldHandleLongPress;
+@property (nonatomic) BOOL shouldHideCaption;
 @property (nonatomic) BOOL overlayWasHiddenBeforeTransition;
 
 @property (nonatomic, readonly) NYTPhotoViewController *currentPhotoViewController;
@@ -107,7 +108,7 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
     [self configurePageViewControllerWithInitialPhoto];
 
     self.view.tintColor = [UIColor whiteColor];
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = self.backgroundColor?self.backgroundColor:[UIColor blackColor];
     self.pageViewController.view.backgroundColor = [UIColor clearColor];
 
     [self.pageViewController.view addGestureRecognizer:self.panGestureRecognizer];
@@ -228,7 +229,9 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
     NSAssert(self.overlayView != nil, @"_overlayView must be set during initialization, to provide bar button items for this %@", NSStringFromClass([self class]));
 
     UIColor *textColor = self.view.tintColor ?: [UIColor whiteColor];
-    self.overlayView.titleTextAttributes = @{NSForegroundColorAttributeName: textColor};
+    self.overlayView.titleTextAttributes = (self.titleTextAttributes)?self.titleTextAttributes:@{NSForegroundColorAttributeName: textColor};
+
+    self.overlayView.backgroundColor = self.isTitleBackgroundSolid?self.view.backgroundColor:[UIColor clearColor];
     
     [self updateOverlayInformation];
     [self.view addSubview:self.overlayView];
@@ -271,7 +274,9 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
     }
 
     self.overlayView.captionViewRespectsSafeArea = captionViewRespectsSafeArea;
-    self.overlayView.captionView = captionView;
+    if (!self.shouldHideCaption) {
+        self.overlayView.captionView = captionView;
+    }
 }
 
 - (void)doneButtonTapped:(id)sender {
@@ -316,6 +321,14 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
 
 - (void)setLeftBarButtonItem:(UIBarButtonItem *)leftBarButtonItem {
     self.overlayView.leftBarButtonItem = leftBarButtonItem;
+}
+
+-(void)setTitleTextAttributes:(NSDictionary<NSString *,id> *)titleTextAttributes{
+    _titleTextAttributes = titleTextAttributes;
+}
+
+-(void)setIsTitleBackgroundSolid:(BOOL)isTitleBackgroundSolid{
+    _isTitleBackgroundSolid = isTitleBackgroundSolid;
 }
 
 - (NSArray *)leftBarButtonItems {

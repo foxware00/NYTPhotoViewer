@@ -74,6 +74,26 @@ extern NSString * const NYTPhotosViewControllerDidDismissNotification;
 @property (nonatomic, readonly, nullable) NYTPhotosOverlayView *overlayView;
 
 /**
+ *  Set custom title attributes of overlayView.
+ */
+@property (nonatomic, copy, nullable)NSDictionary <NSString *, id> *titleTextAttributes;
+
+/**
+ *  The overlay view title background. Transparent by default. If solid, color is similar with controller view.
+ */
+@property (nonatomic)BOOL isTitleBackgroundSolid;
+
+/**
+ *  The view's background color
+ */
+@property (nonatomic)UIColor * backgroundColor;
+
+/**
+ *  The view's background color
+ */
+@property (nonatomic, readonly)BOOL * shouldHideCaption;
+
+/**
  *  The left bar button item overlaying the photo.
  */
 @property (nonatomic, nullable) UIBarButtonItem *leftBarButtonItem;
