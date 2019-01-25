@@ -71,6 +71,7 @@
     self.navigationBar.barTintColor = nil;
     self.navigationBar.translucent = YES;
     self.navigationBar.shadowImage = [[UIImage alloc] init];
+    self.navigationBar.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
     [self.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     
     self.navigationItem = [[UINavigationItem alloc] initWithTitle:@""];
@@ -96,10 +97,10 @@
 }
 
 - (void)setCaptionView:(UIView *)captionView {
-    if (self.captionView == captionView) {
+    //if (self.captionView == captionView) {
         return;
-    }
-    
+    //}
+
     [self.captionView removeFromSuperview];
     
     _captionView = captionView;
