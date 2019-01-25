@@ -46,7 +46,7 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
 @property (nonatomic) NSNotificationCenter *notificationCenter;
 
 @property (nonatomic) BOOL shouldHandleLongPress;
-@property (nonatomic) BOOL shouldHideCaption;
+@property (nonatomic) BOOL *shouldHideCaption;
 @property (nonatomic) BOOL overlayWasHiddenBeforeTransition;
 
 @property (nonatomic, readonly) NYTPhotoViewController *currentPhotoViewController;
