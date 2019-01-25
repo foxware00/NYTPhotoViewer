@@ -68,8 +68,8 @@
     self.navigationBar = [[UINavigationBar alloc] init];
     self.navigationBar.translatesAutoresizingMaskIntoConstraints = NO;
     
-    self.navigationBar.barTintColor = nil;
-    self.navigationBar.translucent = YES;
+//    self.navigationBar.barTintColor = nil;
+//    self.navigationBar.translucent = YES;
     self.navigationBar.shadowImage = [[UIImage alloc] init];
     self.navigationBar.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
     [self.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
